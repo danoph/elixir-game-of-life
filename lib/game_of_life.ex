@@ -6,11 +6,15 @@ defmodule GameOfLife.DeadCell do
   defstruct x: nil, y: nil
 end
 
+defmodule GameOfLife.Grid do
+  defstruct grid: []
+end
+
 defmodule GameOfLife.Game do
   alias GameOfLife.DeadCell
   alias GameOfLife.LiveCell
 
-  def tick(grid, 1) do
+  def tick(grid) do
   end
 
   def to_grid(grid) do
