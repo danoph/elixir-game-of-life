@@ -20,7 +20,8 @@ defmodule GameOfLife.Game do
       row
       |> Enum.with_index
       |> Enum.map(fn
-        ({value, x }) -> %{ x: x, y: y, alive: value }
+        ({0, x }) -> %{ x: x, y: y, alive: false }
+        ({1, x }) -> %{ x: x, y: y, alive: true }
         #({1, x }) -> cell = %{ x: x, y: y, alive: true }
         #%Cell{} = { x, y, alive: false }
         #IO.puts("#{cell.x},#{cell.y} => #{cell.alive}")
