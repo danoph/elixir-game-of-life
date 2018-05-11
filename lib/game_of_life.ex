@@ -1,16 +1,16 @@
+defmodule GameOfLife.LiveCell do
+  defstruct x: nil, y: nil
+end
+
+defmodule GameOfLife.DeadCell do
+  defstruct x: nil, y: nil
+end
+
 defmodule GameOfLife.Game do
-  alias GameOfLife.Cell
+  alias GameOfLife.DeadCell
+  alias GameOfLife.LiveCell
 
   def tick(grid, 1) do
-    #grid
-    #|> Enum.with_index
-    #|> Enum.each(fn({row, y}) ->
-      #row
-      #|> Enum.with_index
-      #|> Enum.each(fn({value, x }) ->
-        #IO.puts("#{y} => #{row}")
-      #end)
-    #end)
   end
 
   def to_grid(grid) do
@@ -20,11 +20,8 @@ defmodule GameOfLife.Game do
       row
       |> Enum.with_index
       |> Enum.map(fn
-        ({0, x }) -> %{ x: x, y: y, alive: false }
-        ({1, x }) -> %{ x: x, y: y, alive: true }
-        #({1, x }) -> cell = %{ x: x, y: y, alive: true }
-        #%Cell{} = { x, y, alive: false }
-        #IO.puts("#{cell.x},#{cell.y} => #{cell.alive}")
+        ({0, x }) -> %DeadCell{ x: x, y: y }
+        ({1, x }) -> %LiveCell{ x: x, y: y }
       end)
     end)
   end
@@ -40,8 +37,4 @@ defmodule GameOfLife.Game do
       end)
     end)
   end
-end
-
-defmodule GameOfLife.Cell do
-  defstruct x: nil, y: nil, alive: false
 end
